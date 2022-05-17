@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-first',
@@ -6,16 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first.component.css'],
 })
 export class FirstComponent implements OnInit {
-  name = 'aymen';
+  @Input() name = 'aymen';
   isHidden = true;
   buttonName = 'show';
   age = '';
   constructor() {}
 
   ngOnInit(): void {
-    setTimeout(() => {
+/*     setTimeout(() => {
       this.name = 'yosri';
-    }, 3000);
+    }, 3000); */
     /*     setInterval(() => {
       this.isHidden = !this.isHidden;
     }, 2000); */
