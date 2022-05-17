@@ -8,6 +8,7 @@ import { Cv } from '../model/cv';
 })
 export class CvComponent implements OnInit {
   cvs: Cv[] = [];
+  selectedCv: Cv | null = null;
   constructor() {
     this.cvs = [
       new Cv(
@@ -32,4 +33,7 @@ export class CvComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  getSelectedCv(cv: Cv) {
+    this.selectedCv = cv;
+  }
 }

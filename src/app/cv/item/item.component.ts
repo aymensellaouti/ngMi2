@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cv } from '../model/cv';
 
 @Component({
@@ -8,7 +8,15 @@ import { Cv } from '../model/cv';
 })
 export class ItemComponent implements OnInit {
   @Input() cv: Cv | null = null;
+  @Output() selectCv = new EventEmitter<Cv>();
   constructor() {}
 
   ngOnInit(): void {}
+  selectCvClick() {
+    /*
+      Envoyer un event qui contient le cv
+    */
+    if(this.cv)
+      this.selectCv.emit(this.cv);
+  }
 }
