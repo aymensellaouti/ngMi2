@@ -1,8 +1,7 @@
 <ul class="list-group">
-  <li class="list-group-item">
-    <app-item (selectCv)="forwardSelectedCv($event)" [cv]="cvs[0]"></app-item>
-  </li>
-  <li class="list-group-item">
-    <app-item (selectCv)="forwardSelectedCv($event)" [cv]="cvs[1]"></app-item>
+  <li
+    [ngClass]="{'list-group-item-primary': isPaire, 'list-group-item-secondary': !isPaire}"
+    *ngFor="let actualCv of cvs; let isPaire = even" class="list-group-item">
+    <app-item (selectCv)="forwardSelectedCv($event)" [cv]="actualCv"></app-item>
   </li>
 </ul>
