@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
@@ -27,6 +30,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
+import { TodoComponent } from './todo/todo/todo.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -51,8 +55,12 @@ registerLocaleData(localeAr);
     HighlightDirective,
     RainbowDirective,
     DefaultImagePipe,
+    TodoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
