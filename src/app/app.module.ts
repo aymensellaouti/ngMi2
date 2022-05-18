@@ -22,7 +22,13 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { AmpouleComponent } from './directives/ampoule/ampoule.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
+import { registerLocaleData } from '@angular/common';
 
+import localeFr from '@angular/common/locales/fr';
+import localeAr from '@angular/common/locales/ar';
+import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
+registerLocaleData(localeFr);
+registerLocaleData(localeAr);
 
 @NgModule({
   declarations: [
@@ -43,14 +49,11 @@ import { RainbowDirective } from './directives/rainbow.directive';
     MiniWordComponent,
     AmpouleComponent,
     HighlightDirective,
-    RainbowDirective
+    RainbowDirective,
+    DefaultImagePipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

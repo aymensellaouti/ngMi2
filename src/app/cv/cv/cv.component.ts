@@ -9,6 +9,7 @@ import { Cv } from '../model/cv';
 export class CvComponent implements OnInit {
   cvs: Cv[] = [];
   selectedCv: Cv | null = null;
+  date = new Date();
   constructor() {
     this.cvs = [
       new Cv(
@@ -16,7 +17,7 @@ export class CvComponent implements OnInit {
         'sellaouti',
         'aymen',
         'teacher',
-        'rotating_card_profile2.png',
+        '',
         '123',
         39
       ),
@@ -25,7 +26,7 @@ export class CvComponent implements OnInit {
         'sellaouti',
         'skander',
         'bebe',
-        'rotating_card_profile3.png',
+        '                         ',
         '123',
         3
       ),
