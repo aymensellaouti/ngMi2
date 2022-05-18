@@ -1,0 +1,18 @@
+.ampoule {
+  width: 150px;
+  height: 150px;
+  padding: 50px;
+  border: black solid 2px;
+}
+.allume {
+  background-color: yellow;
+  color: black;
+}
+
+.eteinte {
+  background-color: black;
+  color: white;
+}
+.defectueuse {
+  background-color: red;
+}

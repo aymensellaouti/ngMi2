@@ -1,0 +1,13 @@
+<div
+  (click)="interupteur()"
+  (dblclick)="abimer()"
+  class="ampoule"
+  [ngClass]="{
+    'allume': isAllume && !isDefectueuse,
+    'eteinte': !isAllume && !isDefectueuse,
+    'defectueuse': isDefectueuse
+  }"
+>ampoule</div>
+
+<p appHighilght>cc</p>
+<p appHighilght [in]="'white'" [out]="'red'">cc</p>
