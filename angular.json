@@ -30,8 +30,8 @@
             "scripts": [
               "src/assets/js/jquery-1.11.0.js",
               "src/assets/js/bootstrap.min.js",
-              "src/assets/js/metisMenu.min.js",
-              "src/assets/js/raphael.min.js",
+              "src/assets/js/metisMenu/metisMenu.min.js",
+              "src/assets/js/raphael/raphael.min.js",
               "src/assets/js/sb-admin-2.js"
             ]
           },
