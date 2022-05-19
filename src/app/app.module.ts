@@ -32,6 +32,7 @@ import localeAr from '@angular/common/locales/ar';
 import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
 import { TodoComponent } from './todo/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
+import { NavbarComponent } from './navbar/navbar.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -58,6 +59,7 @@ registerLocaleData(localeAr);
     DefaultImagePipe,
     TodoComponent,
     EmbaucheComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module
