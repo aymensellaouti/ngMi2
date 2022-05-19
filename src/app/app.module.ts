@@ -34,6 +34,9 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
+import { NF404Component } from './components/nf404/nf404.component';
+import { FrontComponent } from './components/front/front.component';
+import { BackComponent } from './components/back/back.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -62,6 +65,9 @@ registerLocaleData(localeAr);
     EmbaucheComponent,
     NavbarComponent,
     DetailCvComponent,
+    NF404Component,
+    FrontComponent,
+    BackComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module

@@ -6,18 +6,30 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { ColorComponent } from './components/color/color.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
+import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
+import { NF404Component } from './components/nf404/nf404.component';
+import { FrontComponent } from './components/front/front.component';
+import { BackComponent } from './components/back/back.component';
 
 const routes: Routes = [
-  {path: '', component: FirstComponent},
-  {path: 'cv', component: CvComponent},
-  {path: 'todo', component: TodoComponent},
-  {path: 'word', component: MiniWordComponent},
-  {path: 'color/:couleur/:defCol', component: ColorComponent},
-  {path: ':qqechose', component: SecondComponent},
+  { path: '', component: FirstComponent },
+  { path: 'cv', component: CvComponent },
+  { path: 'cv/:id', component: DetailCvComponent },
+  { path: 'todo', component: TodoComponent },
+
+  { path: 'word', component: MiniWordComponent },
+  { path: 'color/:couleur/:defCol', component: ColorComponent },
+  { path: ':qqechose', component: SecondComponent },
+  { path: 'admin', component: BackComponent, children: [
+
+  ] },
+  { path: '', component: FrontComponent, children: [
+    { path: '**', component: NF404Component },
+  ] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
