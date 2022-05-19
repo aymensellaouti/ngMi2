@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cv } from '../model/cv';
 import { LoggerService } from '../../services/logger.service';
 import { SayHelloService } from '../../services/say-hello.service';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-cv',
@@ -14,34 +15,14 @@ export class CvComponent implements OnInit {
   date = new Date();
   constructor(
     private loggerService: LoggerService,
-    private sayHelloService: SayHelloService
-  ) {
-    this.cvs = [
-      new Cv(1, 'sellaouti', 'aymen', 'teacher', '', '123', 39),
-      new Cv(
-        2,
-        'sellaouti',
-        'skander',
-        'bebe',
-        '                         ',
-        '123',
-        3
-      ),
-      new Cv(
-        3,
-        'sellaouti',
-        'skander',
-        'bebe',
-        'rotating_card_profile3.png',
-        '123',
-        3
-      ),
-    ];
-  }
+    private sayHelloService: SayHelloService,
+    private cvService: CvService
+  ) {}
 
   ngOnInit(): void {
     this.loggerService.loggerCeQueTuVeux('Mar7ba :D');
     this.sayHelloService.hello();
+    this.cvs = this.cvService.getCvs();
   }
   getSelectedCv(cv: Cv) {
     this.selectedCv = cv;

@@ -8,6 +8,7 @@ import { Cv } from '../model/cv';
 })
 export class ItemComponent implements OnInit {
   @Input() cv: Cv | null = null;
+  @Input() size = 50;
   @Output() selectCv = new EventEmitter<Cv>();
   constructor() {}
 
@@ -16,7 +17,6 @@ export class ItemComponent implements OnInit {
     /*
       Envoyer un event qui contient le cv
     */
-    if(this.cv)
-      this.selectCv.emit(this.cv);
+    if (this.cv) this.selectCv.emit(this.cv);
   }
 }

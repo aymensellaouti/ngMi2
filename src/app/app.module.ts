@@ -31,6 +31,7 @@ import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
 import { TodoComponent } from './todo/todo/todo.component';
+import { EmbaucheComponent } from './cv/embauche/embauche.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -56,6 +57,7 @@ registerLocaleData(localeAr);
     RainbowDirective,
     DefaultImagePipe,
     TodoComponent,
+    EmbaucheComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module
