@@ -1,0 +1,10 @@
+<form #testForm="ngForm">
+  name : <input ngModel required name="name" type="text" class="form-control">
+  age : <input ngModel name="age" required pattern="[0-1]?\d{1,2}" type="text" class="form-control">
+</form>
+
+<button
+  (click)="test(testForm)"
+  class="btn btn-primary">
+  process
+</button>

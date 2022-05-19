@@ -37,6 +37,7 @@ import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
 import { NF404Component } from './components/nf404/nf404.component';
 import { FrontComponent } from './components/front/front.component';
 import { BackComponent } from './components/back/back.component';
+import { TestFormComponent } from './components/test-form/test-form.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -68,6 +69,7 @@ registerLocaleData(localeAr);
     NF404Component,
     FrontComponent,
     BackComponent,
+    TestFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module
