@@ -38,6 +38,7 @@ import { NF404Component } from './components/nf404/nf404.component';
 import { FrontComponent } from './components/front/front.component';
 import { BackComponent } from './components/back/back.component';
 import { TestFormComponent } from './components/test-form/test-form.component';
+import { LoginComponent } from './login/login.component';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -70,6 +71,7 @@ registerLocaleData(localeAr);
     FrontComponent,
     BackComponent,
     TestFormComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module

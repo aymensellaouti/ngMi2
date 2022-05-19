@@ -10,13 +10,14 @@ import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
 import { NF404Component } from './components/nf404/nf404.component';
 import { FrontComponent } from './components/front/front.component';
 import { BackComponent } from './components/back/back.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
   { path: 'cv', component: CvComponent },
   { path: 'cv/:id', component: DetailCvComponent },
   { path: 'todo', component: TodoComponent },
-
+  { path: 'login', component: LoginComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color/:couleur/:defCol', component: ColorComponent },
   { path: ':qqechose', component: SecondComponent },
