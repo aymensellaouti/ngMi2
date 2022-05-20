@@ -43,6 +43,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
 import { TestObservableComponent } from './components/test-observable/test-observable.component';
 import { TestHttpComponent } from './components/test-http/test-http.component';
+import { AuthentificationInterceptorProvider } from './auth/interceptors/auth.interceptor';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -88,7 +89,7 @@ registerLocaleData(localeAr);
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthentificationInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
