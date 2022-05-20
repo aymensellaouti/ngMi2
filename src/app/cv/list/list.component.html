@@ -6,6 +6,7 @@
       }"
     *ngFor="let actualCv of cvs; let isPaire = even"
     class="list-group-item">
-    <app-item (selectCv)="forwardSelectedCv($event)" [cv]="actualCv"></app-item>
+<!--     (selectCv)="forwardSelectedCv($event)"
+ -->    <app-item  [cv]="actualCv"></app-item>
   </li>
 </ul>

@@ -3,6 +3,7 @@ import { Cv } from '../model/cv';
 import { LoggerService } from '../../services/logger.service';
 import { SayHelloService } from '../../services/say-hello.service';
 import { CvService } from '../services/cv.service';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cv',
@@ -11,7 +12,8 @@ import { CvService } from '../services/cv.service';
 })
 export class CvComponent implements OnInit {
   cvs: Cv[] = [];
-  selectedCv: Cv | null = null;
+  nb = 0;
+  /*   selectedCv: Cv | null = null; */
   date = new Date();
   constructor(
     private loggerService: LoggerService,
@@ -23,8 +25,13 @@ export class CvComponent implements OnInit {
     this.loggerService.loggerCeQueTuVeux('Mar7ba :D');
     this.sayHelloService.hello();
     this.cvs = this.cvService.getCvs();
+    this.cvService.selectCvObservable$
+      .pipe(distinctUntilChanged())
+      .subscribe(() => {
+        this.nb++;
+      });
   }
-  getSelectedCv(cv: Cv) {
+  /*   getSelectedCv(cv: Cv) {
     this.selectedCv = cv;
-  }
+  } */
 }
