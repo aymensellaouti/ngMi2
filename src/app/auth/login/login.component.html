@@ -44,7 +44,9 @@
       taille est supérieur ou égale à 4 caractères
     </div>
   </div>
-  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">
-    Submit
+  <button
+    (click)="login(loginForm.value)"
+    [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">
+    login
   </button>
 </form>

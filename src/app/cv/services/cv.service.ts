@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Cv } from '../model/cv';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { APIS } from '../../../config/apis';
 
 @Injectable({
@@ -11,9 +11,7 @@ export class CvService {
   private cvs: Cv[] = [];
   private selectCvSubject = new Subject<Cv>();
   selectCvObservable$ = this.selectCvSubject.asObservable();
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
     this.cvs = [
       new Cv(1, 'sellaouti', 'aymen', 'teacher', '', '123', 39),
       new Cv(
@@ -39,7 +37,7 @@ export class CvService {
   getFakeCvs(): Cv[] {
     return this.cvs;
   }
-  getCvs(): Observable<Cv[]>{
+  getCvs(): Observable<Cv[]> {
     return this.http.get<Cv[]>(APIS.cv);
   }
   deleteCv(cv: Cv): boolean {
@@ -50,11 +48,26 @@ export class CvService {
     }
     return false;
   }
-  findCvById(id: number): Cv | null {
+  findFakeCvById(id: number): Cv | null {
     return this.cvs.find((cv) => cv.id == id) ?? null;
+  }
+  findCvById(id: number): Observable<Cv> {
+    return this.http.get<Cv>(APIS.cv + id);
+  }
+
+  deletCvById(id: number): Observable<any> {
+    const params = new HttpParams().set(
+      'access_token',
+      localStorage.getItem('token') ?? ''
+    );
+    return this.http.delete<any>(APIS.cv + id, {params});
   }
 
   selectCv(cv: Cv) {
     this.selectCvSubject.next(cv);
+  }
+  addCv(cv: Cv): Observable<Cv> {
+    const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token')?? '');
+    return this.http.post<Cv>(APIS.cv, cv, {headers});
   }
 }

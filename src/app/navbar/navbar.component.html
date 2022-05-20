@@ -26,6 +26,11 @@
           <i class="fa fa-dashboard fa-fw"> </i> Cv</a
         >
       </li>
+      <li *ngIf="authService.isAuthenticated()">
+        <a [routerLink]="['cv/add']" routerLinkActive="active text-danger">
+          <i class="fa fa-upload fa-fw"> </i>Add Cv</a
+        >
+      </li>
       <li>
         <a [routerLink]="['todo']" routerLinkActive="active text-danger">
           <i class="fa fa-dashboard fa-fw"> </i> Todo</a
@@ -41,10 +46,13 @@
           <i class="fa fa-dashboard fa-fw"> </i> Word</a
         >
       </li>
-      <li>
+      <li *ngIf="!authService.isAuthenticated()">
         <a [routerLink]="['login']" routerLinkActive="active text-danger">
-          <i class="fa fa-user fa-fw"> </i> Login</a
+          <i class="fa fa-sign-in fa-fw"> </i> Login</a
         >
+      </li>
+      <li *ngIf="authService.isAuthenticated()" (click)="logout()">
+        <a> <i class="fa fa-sign-out fa-fw"> </i> Logout</a>
       </li>
     </ul>
   </div>
