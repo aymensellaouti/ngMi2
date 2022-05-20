@@ -12,11 +12,12 @@ import { FrontComponent } from './components/front/front.component';
 import { BackComponent } from './components/back/back.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
   { path: 'cv', component: CvComponent },
-  { path: 'cv/add', component: AddCvComponent },
+  { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
   { path: 'cv/:id', component: DetailCvComponent },
   { path: 'todo', component: TodoComponent },
   { path: 'login', component: LoginComponent },
