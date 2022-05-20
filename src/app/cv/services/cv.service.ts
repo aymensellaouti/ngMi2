@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Cv } from '../model/cv';
+import { HttpClient } from '@angular/common/http';
+import { APIS } from '../../../config/apis';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +11,9 @@ export class CvService {
   private cvs: Cv[] = [];
   private selectCvSubject = new Subject<Cv>();
   selectCvObservable$ = this.selectCvSubject.asObservable();
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     this.cvs = [
       new Cv(1, 'sellaouti', 'aymen', 'teacher', '', '123', 39),
       new Cv(
@@ -32,8 +36,11 @@ export class CvService {
       ),
     ];
   }
-  getCvs(): Cv[] {
+  getFakeCvs(): Cv[] {
     return this.cvs;
+  }
+  getCvs(): Observable<Cv[]>{
+    return this.http.get<Cv[]>(APIS.cv);
   }
   deleteCv(cv: Cv): boolean {
     const index = this.cvs.indexOf(cv);
