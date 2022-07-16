@@ -39,6 +39,10 @@ import { FrontComponent } from './components/front/front.component';
 import { BackComponent } from './components/back/back.component';
 import { TestFormComponent } from './components/test-form/test-form.component';
 import { LoginComponent } from './login/login.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -75,7 +79,11 @@ registerLocaleData(localeAr);
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent],
