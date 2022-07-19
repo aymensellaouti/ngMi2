@@ -1,13 +1,21 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Cv } from '../model/cv';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements OnInit {
-  @Input() cvs: Cv[] = [];
+  @Input() cvs: Cv[] | null = [];
   @Output() forwardCv = new EventEmitter<Cv>();
   constructor() {}
 

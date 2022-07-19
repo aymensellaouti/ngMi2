@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +44,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { CvEffects } from './cv/effects/cv.effect';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -77,13 +81,22 @@ registerLocaleData(localeAr);
     TestFormComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), StoreModule.forRoot({}, {}),
+    ToastrModule.forRoot(),
+    StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, {
-      metaReducers
+      metaReducers,
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }), // ToastrModule added
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([AppEffects, CvEffects]), // ToastrModule added
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

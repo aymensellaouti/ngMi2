@@ -3,7 +3,10 @@
     <div class="alert alert-warning">
       {{ date | date: "long":"GMT+1":"ar-AR" | uppercase }}
     </div>
-    <app-list [cvs]="cvs" (forwardCv)="getSelectedCv($event)"></app-list>
+    <app-list
+      [cvs]="cvs$ | async"
+      (forwardCv)="getSelectedCv($event)"
+    ></app-list>
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv"></app-cv-card>
