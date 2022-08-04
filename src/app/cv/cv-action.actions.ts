@@ -5,7 +5,7 @@ export enum cvActionsTypes {
   'LOAD_CV' = '[CvAction] Load Cvs Actions',
   'LOAD_CV_SUCCESS' = '[CvAction] Load Cvs Actions Success',
   'LOAD_CV_FAILURE' = '[CvAction] Load Cvs Actions Failure',
-  'LOAD_CV_By_ID' = '[DetailCv] Load Cv By Id Actions Failure',
+  'LOAD_CV_By_ID' = '[DetailCv] Load Cv By Id Actions',
   'LOAD_CV_By_ID_SUCCESS' = '[DetailCv] Load Cv By Id Actions Success',
   'LOAD_CV_By_ID_FAILURE' = '[DetailCv]  Load Cv By Id Actions Failure',
 }

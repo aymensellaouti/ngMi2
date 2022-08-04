@@ -47,6 +47,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { CvEffects } from './cv/effects/cv.effect';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 registerLocaleData(localeFr);
 registerLocaleData(localeAr);
 
@@ -90,12 +91,16 @@ registerLocaleData(localeAr);
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, {
       metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+      },
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([AppEffects, CvEffects]), // ToastrModule added
+    StoreRouterConnectingModule.forRoot(),
     HttpClientModule,
   ],
   providers: [],

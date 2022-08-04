@@ -1,13 +1,25 @@
 import { createSelector } from '@ngrx/store';
 import { State } from '../../reducers/index';
-import { CvState } from '../reducers/cv.reducer';
+import * as fromCvReducer from '../reducers/cv.reducer';
 
 export const cvStateSelector = (state: State) => state.cv;
 export const allCvsSelector = createSelector(
   cvStateSelector,
-  (state: CvState) => state.cvList
+  fromCvReducer.cvSelectors.selectAll
+);
+export const selectIdsCvs = createSelector(
+  cvStateSelector,
+  fromCvReducer.cvSelectors.selectIds
+);
+export const selectEntitiesCvs = createSelector(
+  cvStateSelector,
+  fromCvReducer.cvSelectors.selectEntities
+);
+export const selectTotalCv = createSelector(
+  cvStateSelector,
+  fromCvReducer.cvSelectors.selectTotal
 );
 export const detailCvSelector = createSelector(
   cvStateSelector,
-  (state: CvState) => state.selectedCv
+  (state: fromCvReducer.CvState) => state.selectedCv
 );

@@ -8,7 +8,7 @@ import { CvState } from '../reducers/cv.reducer';
 import * as fromCvActions from './../cv-action.actions';
 import { State } from 'src/app/reducers';
 import { Observable } from 'rxjs';
-import { allCvsSelector } from '../selectors/cv.selector';
+import * as cvsSelectors from '../selectors/cv.selector';
 
 @Component({
   selector: 'app-cv',
@@ -27,7 +27,16 @@ export class CvComponent implements OnInit {
     private store: Store<State>
   ) {
     this.store.dispatch(fromCvActions.loadCvActions());
-    this.cvs$ = this.store.select(allCvsSelector);
+    this.cvs$ = this.store.select(cvsSelectors.allCvsSelector);
+    this.store.select(cvsSelectors.selectIdsCvs).subscribe((data) => {
+      console.log('selectIdsCvs : ', data);
+    });
+    this.store.select(cvsSelectors.selectEntitiesCvs).subscribe((data) => {
+      console.log('selectEntitiesCvs : ', data);
+    });
+    this.store.select(cvsSelectors.selectTotalCv).subscribe((data) => {
+      console.log('selectTotalCv : ', data);
+    });
   }
   ngOnInit(): void {
     this.loggerService.loggerCeQueTuVeux('Mar7ba :D');

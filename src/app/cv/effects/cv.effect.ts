@@ -4,9 +4,16 @@ import { mergeMap, map, catchError } from 'rxjs/operators';
 import * as fromCvActions from './../cv-action.actions';
 import { CvService } from '../services/cv.service';
 import { EMPTY } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Injectable()
 export class CvEffects {
-  constructor(private actions$: Actions, private cvService: CvService) {}
+  constructor(
+    private actions$: Actions,
+    private cvService: CvService,
+    private toaster: ToastrService,
+    private router: Router
+  ) {}
   loadCvs$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromCvActions.cvActionsTypes.LOAD_CV),
@@ -25,14 +32,18 @@ export class CvEffects {
   loadCvById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromCvActions.cvActionsTypes.LOAD_CV_By_ID),
-      mergeMap(({id}) => {
+      mergeMap(({ id }) => {
         console.log(' here in effects loadCvById', id);
         return this.cvService.findCvByIdApi(id).pipe(
           map((cv) => ({
             type: fromCvActions.cvActionsTypes.LOAD_CV_By_ID_SUCCESS,
             cv: cv,
-          }))
-          /* catchError(() => EMPTY) */
+          })),
+          catchError(() => {
+            this.toaster.error('Cv Not found');
+            this.router.navigate(['cv']);
+            return EMPTY;
+          })
         );
       })
     )
